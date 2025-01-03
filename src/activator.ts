@@ -71,7 +71,7 @@ export class Activator extends Crawler {
         if (await this.exists('input[class=verify_code]')) {
             console.log("  > verify (two-factor authentication)")
             const code = this.options.key
-                ? authenticator.generate(this.options.key.replace(/ /g, ''))
+                ? authenticator.generate(this.options.key.toString().replace(/ /g, ''))
                 : await this.readUserInput("verify code (Check your authenticator app): ");
 
             await this.type('input[class=verify_code]', code)
